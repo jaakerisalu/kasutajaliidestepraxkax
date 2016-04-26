@@ -1,0 +1,19 @@
+# Ignore everything in .idea
+.idea
+
+*.pyo
+*.pyc
+.sass-cache/
+npm-debug.log
+node_modules/
+venv/
+
+kasutajaliidestepraxkax/settings/local.py
+kasutajaliidestepraxkax/db.sqlite3
+kasutajaliidestepraxkax/assets/
+kasutajaliidestepraxkax/media/
+kasutajaliidestepraxkax/static/bower_components/
+
+kasutajaliidestepraxkax/.cache
+kasutajaliidestepraxkax/.coverage
+kasutajaliidestepraxkax/cover/
