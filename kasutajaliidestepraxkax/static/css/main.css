@@ -1,0 +1,444 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/app.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+.login-container {
+  padding: 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-container input {
+  color: rgba(10, 10, 10, 0.7);
+}
+
+.login-container small {
+  color: rgba(10, 10, 10, 0.7);
+}
+
+.login-button {
+  margin: 10px;
+  width: 30%;
+}
+
+.login-error {
+  margin: 10px;
+  color: #ff5252;
+}
+
+.hidden {
+  display: none;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../static/img/stardust.png");
+  flex: 1;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+#grade-table {
+  width: 100%;
+}
+
+.file-upload {
+  margin-bottom: 20px;
+  background-color: rgba(250, 250, 250, 0.9);
+  font-size: 18pt;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.is-active {
+  background-color: #c0392b;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.lab-selector {
+  width: 100px;
+}
+
+.element-with-margin {
+  margin-bottom: 10px;
+}
+
+.fixed-add-button {
+  position: fixed;
+  z-index: 9;
+  bottom: 20px;
+  right: 13%;
+}
+
+/* The Modal (background) */
+.custom-modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+  /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close :hover, .close :focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-exercise:hover {
+  cursor: pointer;
+}
+
+.custom-chip {
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+  margin: 5px;
+}
+
+.custom-chip .material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+}
+
+#grades-table-head .mdl-select {
+  width: auto;
+  padding: 0;
+}
+
+#grades-table-head th {
+  font-size: 16px;
+}
+
+#grades-table-head th select {
+  padding: 0;
+}
+
+.mdl-textfield--floating-label.is-filled .mdl-textfield__label {
+  color: #4caf50;
+  font-size: 12px;
+  top: 4px;
+  visibility: visible;
+}
+
+.mdl-dialog__actions {
+  padding: 8px;
+}
+
+.mdl-dialog__actions .btn-cancel {
+  color: #CA1717;
+}
+
+.demo-avatar {
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .login-container {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+.delete-column {
+  text-align: center !important;
+}
+
+.delete-column .delete-student {
+  color: #CA1717;
+  font-size: 12px;
+}
+
+.delete-column .delete-student:hover {
+  cursor: pointer;
+}
+
+.btn-search {
+  padding-top: 3px;
+  padding-bottom: 0;
+}
+
+.awesomplete {
+  display: block !important;
+}
+
+#delete-edit {
+  color: #444444;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/app.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+.login-container {
+  padding: 10px;
+  background-color: rgba(250, 250, 250, 0.9);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-container input {
+  color: rgba(10, 10, 10, 0.7);
+}
+.login-container small {
+  color: rgba(10, 10, 10, 0.7);
+}
+
+.login-button {
+  margin: 10px;
+  width: 30%;
+}
+
+.login-error {
+  margin: 10px;
+  color: #ff5252;
+}
+
+.hidden {
+  display: none;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../static/img/stardust.png);
+  flex: 1;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+#grade-table {
+  width: 100%;
+}
+
+.file-upload {
+  margin-bottom: 20px;
+  background-color: rgba(250, 250, 250, 0.9);
+  font-size: 18pt;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.is-active {
+  background-color: #c0392b;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.lab-selector {
+  width: 100px;
+}
+
+.element-with-margin {
+  margin-bottom: 10px;
+}
+
+.fixed-add-button {
+  position: fixed;
+  z-index: 9;
+  bottom: 20px;
+  right: 13%;
+}
+
+/* The Modal (background) */
+.custom-modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+  /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close :hover, .close :focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-exercise:hover {
+  cursor: pointer;
+}
+
+.custom-chip {
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+  margin: 5px;
+}
+.custom-chip .material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+}
+
+#grades-table-head .mdl-select {
+  width: auto;
+  padding: 0;
+}
+#grades-table-head th {
+  font-size: 16px;
+}
+#grades-table-head th select {
+  padding: 0;
+}
+
+.mdl-textfield--floating-label.is-filled .mdl-textfield__label {
+  color: #4caf50;
+  font-size: 12px;
+  top: 4px;
+  visibility: visible;
+}
+
+.mdl-dialog__actions {
+  padding: 8px;
+}
+.mdl-dialog__actions .btn-cancel {
+  color: #CA1717;
+}
+
+.demo-avatar {
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .login-container {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+.delete-column {
+  text-align: center !important;
+}
+.delete-column .delete-student {
+  color: #CA1717;
+  font-size: 12px;
+}
+.delete-column .delete-student:hover {
+  cursor: pointer;
+}
+
+.btn-search {
+  padding-top: 3px;
+  padding-bottom: 0;
+}
+
+.awesomplete {
+  display: block !important;
+}
+
+#delete-edit {
+  color: #444444;
+}
+
+.browserupgrade {
+  margin: 0;
+  background: #dd8;
+  color: #000;
+  padding: 0.5em 2em;
+  border-bottom: 1px solid #888;
+}
