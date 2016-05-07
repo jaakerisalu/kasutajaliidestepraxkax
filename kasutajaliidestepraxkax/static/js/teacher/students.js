@@ -5,7 +5,6 @@
  * @returns {string}
  */
 function createTableRow(student) {
-    console.log("create");
     var line = '<tr id="row' + student.matricule + '">';
     line += '<td id="table-firstname-col" class="mdl-data-table__cell--non-numeric fullwidth">' + student.first_name + '</td>';
     line += '<td id="table-lastname-col" class="mdl-data-table__cell--non-numeric fullwidth">' + student.last_name + '</td>';
@@ -44,7 +43,7 @@ function clearEditStudentForm() {
  */
 $("#students-table-body").ready(function() {
     for (var i = 0; i < students.length; i++) {
-        $("#students-table-body").append(createTableRow(students[i], i));
+        // $("#students-table-body").append(createTableRow(students[i], i));
     }
 
     initListeners();
@@ -55,6 +54,7 @@ $("#students-table-body").ready(function() {
  *
  */
 function initListeners() {
+
     $("#add-student-form").submit(function(e) {
         e.preventDefault();
 
@@ -63,7 +63,6 @@ function initListeners() {
         var matricule = $("#add-matricule").val();
 
         var errors = checkEmptyValues("add");
-        console.log(errors);
         if (errors.length > 0) {
             errors.forEach(function (entry) {
                 $("#add-student-form #add-" + entry).closest("div.mdl-textfield").addClass("is-invalid");
@@ -81,7 +80,6 @@ function initListeners() {
 
             clearAddStudentForm();
             $(".custom-modal").css("display", "none");
-            console.log(students[students.length - 1]);
 
             $("#students-table-body").append(createTableRow(students[students.length - 1], students.length));
         }
@@ -97,11 +95,9 @@ function initListeners() {
         var matricule = $("#edit-matricule").val();
 
         var errors = checkEmptyValues("edit");
-        console.log(errors);
         if (errors.length > 0) {
 
             errors.forEach(function (entry) {
-                console.log(entry, ("#add-student-form #edit-" + entry));
                 $("#edit-student-form #edit-" + entry).closest(".mdl-textfield").addClass("is-invalid");
             });
 
@@ -145,7 +141,6 @@ function initListeners() {
         if (proceed) {
             students.every(function(entry, i) {
                 if (entry.matricule == studentId) {
-                    console.log("Deleting " + entry.first_name);
                     $("#row" + studentId).remove();
                     students.splice(i, 1);
                     return false
@@ -158,15 +153,14 @@ function initListeners() {
 
 
     $("#students-table-body tr").click(function() {
+        console.log("init row listener");
         var matricule = $(this).find("td#table-matricule-col").text();
-        console.log(matricule);
         editStudent(matricule, this);
     });
 
 
 // FILTER
     $("#search-input").bind('keyup', function(){
-        console.log("up");
         var _this = this;
         // Show only matching TR, hide rest of them
         $.each($("#students-table-body tr"), function() {
@@ -206,8 +200,8 @@ function checkEmptyValues(prefix) {
  * @param elem
  */
 function editStudent(matricule, elem) {
+    console.log("edit");
     students.every(function(entry, i) {
-        console.log(entry.matricule.toString(), matricule);
         if (entry.matricule == matricule) {
             openEditModal(i, elem);
             return false;
@@ -236,6 +230,8 @@ $("#edit-firstname, #edit-lastname, #edit-matricule").keyup(function(){
  * @param elem
  */
 function openEditModal(index, elem) {
+
+    console.log("opening edit modal");
 
     editableIndex = index;
     $editableField = elem;
