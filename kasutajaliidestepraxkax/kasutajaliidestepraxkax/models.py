@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.db import models
 
 
@@ -6,12 +8,18 @@ class Student(models.Model):
     last_name = models.CharField(max_length=255)
     matricule = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
 
 class HomeWork(models.Model):
     """
         This would be a homework that can have any number of subgrades
     """
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class GradeCategory(models.Model):
@@ -27,6 +35,9 @@ class GradeCategory(models.Model):
     name = models.CharField(max_length=255)
     homework = models.ForeignKey(HomeWork, related_name="subgrades")
 
+    def __str__(self):
+        return self.name + " - " + str(self.homework.name)
+
 
 class Grade(models.Model):
     """
@@ -36,6 +47,10 @@ class Grade(models.Model):
     value = models.PositiveSmallIntegerField()  # Vb ta tahab ntx 20 punkti anda, see lubab kuni 32k
     student = models.ForeignKey(Student)
     category = models.ForeignKey(GradeCategory, related_name="grades")
+
+    def __str__(self):
+        return str(self.student.first_name) + " " + str(self.student.last_name) \
+               + " [" + str(self.category.homework) + " - " + str(self.category.name) + ": " + str(self.value) + "]"
 
     class Meta:
         unique_together = ("student", "category")  # Every student can have one grade per category
