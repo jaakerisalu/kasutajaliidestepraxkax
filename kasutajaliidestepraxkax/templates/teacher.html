@@ -80,41 +80,62 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="mdl-tabs mdl-js-tabs">
+                            <div class="mdl-tabs__tab-bar">
+                                {% for hw in homeworks %}
+                                    {% if forloop.counter == 1 %}
+                                        <a href="#tab{{ forloop.counter }}-panel"
+                                           class="mdl-tabs__tab is-active">{{ hw.name }}</a>
+                                    {% else %}
+                                        <a href="#tab{{ forloop.counter }}-panel"
+                                           class="mdl-tabs__tab">{{ hw.name }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
 
-                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
-                            <thead id="grades-table-head">
-                            <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Eesnimi</th>
-                                <th class="mdl-data-table__cell--non-numeric">Perenimi</th>
-                                <th class="mdl-data-table__cell--non-numeric">Matrikkel</th>
-                                <th class="mdl-data-table__cell--non-numeric fullwidth">
-                                    <div class="mdl-select mdl-js-select mdl-select--floating-label select-container">
-                                        <select class="mdl-select__input lab-selector" id="ex-select" name="ex-select">
-                                        </select>
+                            {% for hw in homeworks %}
+                                {% if forloop.counter == 1 %}
+                                    <div class="mdl-tabs__panel is-active" id="tab{{ forloop.counter }}-panel">
+                                {% else %}
+                                    <div class="mdl-tabs__panel" id="tab{{ forloop.counter }}-panel">
+                                {% endif %}
+                                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
+                                            <thead id="grades-table-head">
+                                            <tr>
+                                                <th class="mdl-data-table__cell--non-numeric">Eesnimi</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Perenimi</th>
+                                                <th class="mdl-data-table__cell--non-numeric">Matrikkel</th>
+                                                {% for subgrade in hw.subgrades.all %}
+                                                    <th class="mdl-data-table__cell--non-numeric">{{ subgrade.name }}</th>
+                                                {% endfor %}
+                                                <th class="mdl-data-table__cell--non-numeric">Hinne</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="grades-table-body">
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody id="grades-table-body">
+                            {% endfor %}
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            </div>
 
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button"
-                        id="grade-modal-open" type="button">
-                    <i class="material-icons">add</i>
-                </button>
+                            </div>
+                        </div>
 
-            </div> <!-- GRADE SECTION END -->
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button"
+                                id="grade-modal-open" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
 
-            <!-- EXERCISE SECTION -->
-            <div id="exercises">
-                <div class="mdl-grid demo-content">
-                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                        <ul class="demo-list-item mdl-list" id="exercise-list">
-                            <li class="mdl-list__item add-new-exercise-link" id="add-new-exercise-link">
+                    </div> <!-- GRADE SECTION END -->
+
+                    <!-- EXERCISE SECTION -->
+                    <div id="exercises">
+                        <div class="mdl-grid demo-content">
+                            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                                <ul class="demo-list-item mdl-list" id="exercise-list">
+                                    <li class="mdl-list__item add-new-exercise-link" id="add-new-exercise-link">
                             <span class="mdl-list__item-primary-content">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable"
                                      id="new-ex-container">
@@ -129,166 +150,170 @@
                                     </div>
                                 </div>
                             </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="hidden">
-                        <div id="hidden-text-field">
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="edit-exercise-field"
-                                       pattern="^\w+$">
-                                <label class="mdl-textfield__label" for="edit-exercise-field"></label>
-                                <span class="mdl-textfield__error">Vigane sisend!</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <button class="mdl-button mdl-js-button mdl-button--primary" id="save-edit">Salvesta
-                            </button>
-                            <button class="mdl-button mdl-js-button mdl-button--accent" id="cancel-edit">Katkesta
-                            </button>
-                            <button class="mdl-button mdl-js-button mdl-button--accent" id="delete-edit">Kustuta
-                            </button>
+                            <div class="hidden">
+                                <div id="hidden-text-field">
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" type="text" id="edit-exercise-field"
+                                               pattern="^\w+$">
+                                        <label class="mdl-textfield__label" for="edit-exercise-field"></label>
+                                        <span class="mdl-textfield__error">Vigane sisend!</span>
+                                    </div>
+                                    <button class="mdl-button mdl-js-button mdl-button--primary" id="save-edit">Salvesta
+                                    </button>
+                                    <button class="mdl-button mdl-js-button mdl-button--accent" id="cancel-edit">
+                                        Katkesta
+                                    </button>
+                                    <button class="mdl-button mdl-js-button mdl-button--accent" id="delete-edit">Kustuta
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div> <!-- EXERCISE SECTION END -->
+                    </div> <!-- EXERCISE SECTION END -->
 
-            <!-- STUDENT SECTION -->
-            <div id="students">
-                <div class="mdl-grid demo-content">
-                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <!-- STUDENT SECTION -->
+                    <div id="students">
+                        <div class="mdl-grid demo-content">
+                            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
-                        <!-- STUDENT ADD MODAL -->
-                        <div class="custom-modal" id="custom-modal--add">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <form id="add-student-form" action="#">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="add-firstname"
-                                               name="firstname" pattern="^[^\W\d_]+$">
-                                        <label class="mdl-textfield__label" for="add-firstname">Eesnimi</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                <!-- STUDENT ADD MODAL -->
+                                <div class="custom-modal" id="custom-modal--add">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <form id="add-student-form" action="#">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="add-firstname"
+                                                       name="firstname" pattern="^[^\W\d_]+$">
+                                                <label class="mdl-textfield__label" for="add-firstname">Eesnimi</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="add-lastname"
+                                                       name="lastname" pattern="[a-zA-Z]+">
+                                                <label class="mdl-textfield__label" for="add-lastname">Perenimi</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="add-matricule"
+                                                       name="matricule" pattern="[0-9]+">
+                                                <label class="mdl-textfield__label"
+                                                       for="add-matricule">Matrikkel</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult numbrid</span>
+                                            </div>
+
+                                            <br/>
+
+                                            <br/>
+
+                                            <div class="mdl-dialog__actions">
+                                                <button type="submit" class="mdl-button modal-submit-button">Lisa
+                                                </button>
+                                                <button type="button" class="mdl-button btn-cancel custom-modal-close">
+                                                    Katkesta
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
+                                </div> <!-- STUDENT ADD MODAL END -->
 
-                                    <br/>
+                                <!-- STUDENT EDIT MODAL -->
+                                <div class="custom-modal" id="custom-modal--edit">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <form id="edit-student-form" action="#">
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="edit-firstname"
+                                                       name="firstname" pattern="^[^\W\d_]+$">
+                                                <label class="mdl-textfield__label" for="edit-firstname">Eesnimi</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                            </div>
 
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="add-lastname"
-                                               name="lastname" pattern="[a-zA-Z]+">
-                                        <label class="mdl-textfield__label" for="add-lastname">Perenimi</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                            <br/>
+
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="edit-lastname"
+                                                       name="lastname" pattern="^[^\W\d_]+$">
+                                                <label class="mdl-textfield__label" for="edit-lastname">Perenimi</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult tähed</span>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                <input class="mdl-textfield__input" type="text" id="edit-matricule"
+                                                       name="matricule" pattern="[0-9]+">
+                                                <label class="mdl-textfield__label"
+                                                       for="edit-matricule">Matrikkel</label>
+                                                <span class="mdl-textfield__error">Lubatud ainult numbrid</span>
+                                            </div>
+
+                                            <br/>
+
+                                            <br/>
+
+                                            <div class="mdl-dialog__actions">
+                                                <button type="submit" class="mdl-button">Lisa</button>
+                                                <button type="button" class="mdl-button btn-cancel custom-modal-close">
+                                                    Katkesta
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
-
-                                    <br/>
-
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="add-matricule"
-                                               name="matricule" pattern="[0-9]+">
-                                        <label class="mdl-textfield__label" for="add-matricule">Matrikkel</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult numbrid</span>
-                                    </div>
-
-                                    <br/>
-
-                                    <br/>
-
-                                    <div class="mdl-dialog__actions">
-                                        <button type="submit" class="mdl-button modal-submit-button">Lisa</button>
-                                        <button type="button" class="mdl-button btn-cancel custom-modal-close">
-                                            Katkesta
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> <!-- STUDENT ADD MODAL END -->
-
-                        <!-- STUDENT EDIT MODAL -->
-                        <div class="custom-modal" id="custom-modal--edit">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <form id="edit-student-form" action="#">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="edit-firstname"
-                                               name="firstname" pattern="^[^\W\d_]+$">
-                                        <label class="mdl-textfield__label" for="edit-firstname">Eesnimi</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult tähed</span>
-                                    </div>
-
-                                    <br/>
-
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="edit-lastname"
-                                               name="lastname" pattern="^[^\W\d_]+$">
-                                        <label class="mdl-textfield__label" for="edit-lastname">Perenimi</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult tähed</span>
-                                    </div>
-
-                                    <br/>
-
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="edit-matricule"
-                                               name="matricule" pattern="[0-9]+">
-                                        <label class="mdl-textfield__label" for="edit-matricule">Matrikkel</label>
-                                        <span class="mdl-textfield__error">Lubatud ainult numbrid</span>
-                                    </div>
-
-                                    <br/>
-
-                                    <br/>
-
-                                    <div class="mdl-dialog__actions">
-                                        <button type="submit" class="mdl-button">Lisa</button>
-                                        <button type="button" class="mdl-button btn-cancel custom-modal-close">
-                                            Katkesta
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> <!-- STUDENT EDIT MODAL END -->
+                                </div> <!-- STUDENT EDIT MODAL END -->
 
 
-                        <div class="input-group element-with-margin">
-                            <input type="text" class="form-control" placeholder="Otsi" id="search-input">
+                                <div class="input-group element-with-margin">
+                                    <input type="text" class="form-control" placeholder="Otsi" id="search-input">
                 <span class="input-group-btn">
                     <button class="btn btn-default btn-search" type="button"><i class="material-icons">search</i>
                     </button>
                 </span>
-                        </div><!-- /input-group -->
+                                </div><!-- /input-group -->
 
-                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
-                            <thead id="students-table-head">
-                            <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Eesnimi</th>
-                                <th class="mdl-data-table__cell--non-numeric">Perenimi</th>
-                                <th class="mdl-data-table__cell--non-numeric">Matrikkel</th>
-                                <th class="mdl-data-table__cell--non-numeric">Kustuta</th>
-                            </tr>
-                            </thead>
-                            <tbody id="students-table-body">
-                            {% for student in students %}
-                                <tr id="row' + student.matricule + '">
-                                    <td id="table-firstname-col"
-                                        class="mdl-data-table__cell--non-numeric fullwidth">{{ student.first_name }}</td>
-                                    <td id="table-lastname-col"
-                                        class="mdl-data-table__cell--non-numeric fullwidth">{{ student.last_name }}</td>
-                                    <td id="table-matricule-col"
-                                        class="mdl-data-table__cell--non-numeric fullwidth">{{ student.matricule }}</td>
-                                    <td class="mdl-data-table__cell--non-numeric fullwidth delete-column">
+                                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
+                                    <thead id="students-table-head">
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Eesnimi</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Perenimi</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Matrikkel</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Kustuta</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="students-table-body">
+                                    {% for student in students %}
+                                        <tr id="row' + student.matricule + '">
+                                            <td id="table-firstname-col"
+                                                class="mdl-data-table__cell--non-numeric fullwidth">{{ student.first_name }}</td>
+                                            <td id="table-lastname-col"
+                                                class="mdl-data-table__cell--non-numeric fullwidth">{{ student.last_name }}</td>
+                                            <td id="table-matricule-col"
+                                                class="mdl-data-table__cell--non-numeric fullwidth">{{ student.matricule }}</td>
+                                            <td class="mdl-data-table__cell--non-numeric fullwidth delete-column">
                                         <span class="glyphicon glyphicon-trash delete-student"
                                               data-del="' + student.matricule  + '"></span></td>
-                                </tr>
-                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                <!-- Colored FAB button with ripple -->
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button"
-                        id="add-modal-open" type="button">
-                    <i class="material-icons">add</i>
-                </button>
+                        <!-- Colored FAB button with ripple -->
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button"
+                                id="add-modal-open" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
 
-            </div> <!-- STUDENT END -->
+                    </div> <!-- STUDENT END -->
         </main>
     </div>
 {% endblock %}

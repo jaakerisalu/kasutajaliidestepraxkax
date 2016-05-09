@@ -12,9 +12,9 @@ function loadGradesView() {
 
     $("#grades-table-body").empty();
 
-    addExercisesToTable();
+    // addExercisesToTable();
 
-    addTableRows();
+    // addTableRows();
 
     initGradeListeners();
 
@@ -313,4 +313,5 @@ function addChip(text) {
     $("#add-grade-form").prepend($chip);
     $("#find-student").val("");
 }
+
 
