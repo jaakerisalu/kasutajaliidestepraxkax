@@ -99,3 +99,52 @@ class ChangePasswordForm(forms.ModelForm):
         self.instance.set_password(self.password_new)
 
         return super(ChangePasswordForm, self).save(commit)
+
+
+class RegistrationForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['email', ]
+
+    password = forms.CharField(widget=forms.PasswordInput(), label="Password", required=True)
+    password_confirm = forms.CharField(widget=forms.PasswordInput(), label="Confirm password", required=True)
+
+    helper = FormHelper()
+    helper.layout = Layout(
+        'email',
+        'password',
+        'password_confirm',
+        Submit('submit', 'Register', css_class="btn btn-primary")
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
+            raise forms.ValidationError(u'E-mail "%s" is already in use.' % email)
+
+        # Always return the cleaned data, whether you have changed it or
+        # not.
+        return email
+
+    def clean_password(self):
+        self.password = self.cleaned_data.get('password')
+
+        if len(self.password) < 4:
+            raise forms.ValidationError("Password should be at least 4 characters long")
+
+        return self.password
+
+    def clean_password_confirm(self):
+        self.password = self.cleaned_data.get('password')
+        self.password_confirm = self.cleaned_data.get('password_confirm')
+
+        if self.password and self.password != self.password_confirm:
+            raise forms.ValidationError("Passwords don't match")
+
+        return self.password_confirm
+
+    def save(self, commit=True):
+        self.instance.set_password(self.password)
+
+        return super(RegistrationForm, self).save(commit)
