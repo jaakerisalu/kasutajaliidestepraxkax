@@ -23,11 +23,11 @@ class TeacherView(LoggedInMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-# Teed andmebaasi päringu ja kõik muu infi mis sa kaasa tahad panna siin
-
         students = Student.objects.all()
         homeworks = HomeWork.objects.all()
-        grade_categories = GradeCategory.objects.filter(homework=homeworks[0])
+        # grade_categories = GradeCategory.objects.filter(homework=homeworks[0])
+
+        print(homeworks[0].get_students())
 
         context.update({
             'students': students,

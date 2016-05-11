@@ -94,13 +94,9 @@
                             </div>
 
                             {% for hw in homeworks %}
-                                {% if forloop.counter == 1 %}
-                                    <div class="mdl-tabs__panel is-active" id="tab{{ forloop.counter }}-panel">
-                                {% else %}
-                                    <div class="mdl-tabs__panel" id="tab{{ forloop.counter }}-panel">
-                                {% endif %}
-                                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
-                                            <thead id="grades-table-head">
+                                <div class="mdl-tabs__panel {% if forloop.counter == 1 %}is-active{% endif %}" id="tab{{ forloop.counter }}-panel">
+                                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
+                                        <thead class="grades-table-head">
                                             <tr>
                                                 <th class="mdl-data-table__cell--non-numeric">Eesnimi</th>
                                                 <th class="mdl-data-table__cell--non-numeric">Perenimi</th>
@@ -110,12 +106,30 @@
                                                 {% endfor %}
                                                 <th class="mdl-data-table__cell--non-numeric">Hinne</th>
                                             </tr>
-                                            </thead>
-                                            <tbody id="grades-table-body">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </thead>
+                                        <tbody class="grades-table-body">
+                                            {% for student in hw.get_students %}
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric">{{ student.first_name }}</td>
+                                                    <td class="mdl-data-table__cell--non-numeric">{{ student.last_name }}</td>
+                                                    <td class="mdl-data-table__cell--non-numeric">{{ student.matricule }}</td>
+                                                    {% for subgrade in hw.subgrades.all %}
+                                                        {% if subgrade in student.get_subgrades %}
+                                                            {% for grade in student.grades.all %}
+                                                                {% if grade.category == subgrade %}
+                                                                    <td class="calc">{{ grade.value }}</td>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            <td class="mdl-data-table__cell--non-numeric"></td>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    <td class="total"></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             {% endfor %}
 
                             </div>

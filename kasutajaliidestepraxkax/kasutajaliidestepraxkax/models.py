@@ -11,6 +11,12 @@ class Student(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+    def get_subgrades(self):
+        """
+            Gets a list of all subgrades the student has grades in
+        """
+        return [g.category for g in self.grades.all()]
+
 
 class HomeWork(models.Model):
     """
@@ -20,6 +26,10 @@ class HomeWork(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_students(self):
+        # Return all students who have any grades done current homework
+        return set([g.student for grade in self.subgrades.all() for g in grade.grades.all()])
 
 
 class GradeCategory(models.Model):
@@ -45,7 +55,7 @@ class Grade(models.Model):
         summed by student and does not need to be held in the DB
     """
     value = models.PositiveSmallIntegerField()  # Vb ta tahab ntx 20 punkti anda, see lubab kuni 32k
-    student = models.ForeignKey(Student)
+    student = models.ForeignKey(Student, related_name="grades")
     category = models.ForeignKey(GradeCategory, related_name="grades")
 
     def __str__(self):

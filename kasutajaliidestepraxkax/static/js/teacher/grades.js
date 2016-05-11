@@ -9,16 +9,24 @@ $(document).ready(function() {
  *
  */
 function loadGradesView() {
-
-    $("#grades-table-body").empty();
-
-    // addExercisesToTable();
-
-    // addTableRows();
+    sumRows();
 
     initGradeListeners();
 
     initRowListeners();
+}
+
+/**
+ * Calculate the grade totals per row
+ */
+function sumRows() {
+    $('.grades-table-body tr').each(function(){
+        var total = 0;
+        $('.calc', $(this)).each(function() {
+            total += parseFloat($(this).html());
+        });
+        $(this).find('.total').html(total);
+    });
 }
 
 
