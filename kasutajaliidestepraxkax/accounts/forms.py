@@ -111,10 +111,11 @@ class RegistrationForm(forms.ModelForm):
     password_confirm = forms.CharField(widget=forms.PasswordInput(), label="Confirm password", required=True)
 
     helper = FormHelper()
+    helper.form_class = 'login-form'
     helper.layout = Layout(
-        'email',
-        'password',
-        'password_confirm',
+        Field('email', placeholder='email'),
+        Field('password', placeholder='password'),
+        Field('password_confirm', placeholder='confirm password'),
         Submit('submit', 'Register', css_class="btn btn-primary")
     )
 

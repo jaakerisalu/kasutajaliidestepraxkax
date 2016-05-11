@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
-from kasutajaliidestepraxkax.views import TeacherView, StudentView
+from kasutajaliidestepraxkax.views import TeacherView, StudentView, add_grade, get_grade_modal_data
 
 from accounts import views
 
@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^$', views.login, name='login'),
     url(r'^teacher/$', login_required(TeacherView.as_view()), name='teacher'),
     url(r'^student/$', login_required(StudentView.as_view()), name='student'),
+    url(r'^add-grade/$', login_required(add_grade), name='add_grade'),
+    url(r'^get-grade-modal-content/$', login_required(get_grade_modal_data), name='get_content'),
 
     url(r'^tagauks/', include(admin.site.urls)),
 ]

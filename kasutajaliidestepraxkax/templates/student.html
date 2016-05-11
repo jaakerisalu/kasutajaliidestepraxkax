@@ -5,69 +5,108 @@
 {% block body_id %}page-top{% endblock %}
 
 {% block content %}
-    <div class="flex-container">
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">Kasutajaliidesed</a>
-                </div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Kasutajaliidesed</span>
+                <div class="mdl-layout-spacer"></div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rannar Allorg <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Seaded</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="/logout">Logi välja</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="hdrbtn">
+                    {{ request.user.name }}<i class="material-icons">keyboard_arrow_down</i>
+                </button>
+                <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                    <li class="mdl-menu__item">Settings</li>
+                    <a href="/logout">
+                        <li class="mdl-menu__item">Log out</li>
+                    </a>
+                </ul>
             </div>
-            <!-- /.container-fluid -->
-        </nav>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-color--white mdl-cell mdl-cell--12-col mdl-grid">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="grade-table">
+                            <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Ülesanne</th>
+                                <th class="mdl-data-table__cell--non-numeric">Hinne</th>
+                                <th class="mdl-data-table__cell--non-numeric">Kuupäev</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <form action="/file-upload" class="dropzone file-upload">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>
-                </div>
-
-                <div class="row">
-
-                    <!-- <div class="table-responsive"> -->
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="grade-table">
-                        <thead>
-                        <tr>
-                            <th class="mdl-data-table__cell--non-numeric">Ülesanne</th>
-                            <th class="mdl-data-table__cell--non-numeric">Hinne</th>
-                            <th class="mdl-data-table__cell--non-numeric">Kuupäev</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                    <!-- </div> -->
-
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </section>
+        </main>
     </div>
+
+    {#    <div class="flex-container">#}
+    {#        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">#}
+    {#            <div class="container-fluid">#}
+    {#                <!-- Brand and toggle get grouped for better mobile display -->#}
+    {#                <div class="navbar-header">#}
+    {#                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">#}
+    {#                        <span class="sr-only">Toggle navigation</span>#}
+    {#                        <span class="icon-bar"></span>#}
+    {#                        <span class="icon-bar"></span>#}
+    {#                        <span class="icon-bar"></span>#}
+    {#                    </button>#}
+    {#                    <a class="navbar-brand page-scroll" href="#page-top">Kasutajaliidesed</a>#}
+    {#                </div>#}
+    {##}
+    {#                <!-- Collect the nav links, forms, and other content for toggling -->#}
+    {#                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
+    {#                    <ul class="nav navbar-nav navbar-right">#}
+    {#                        <li class="dropdown">#}
+    {#                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rannar Allorg <span class="caret"></span></a>#}
+    {#                            <ul class="dropdown-menu">#}
+    {#                                <li><a href="#">Seaded</a></li>#}
+    {#                                <li role="separator" class="divider"></li>#}
+    {#                                <li><a href="/logout">Logi välja</a></li>#}
+    {#                            </ul>#}
+    {#                        </li>#}
+    {#                    </ul>#}
+    {#                </div>#}
+    {#                <!-- /.navbar-collapse -->#}
+    {#            </div>#}
+    {#            <!-- /.container-fluid -->#}
+    {#        </nav>#}
+    {##}
+    {#        <section>#}
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    <form action="/file-upload" class="dropzone file-upload">#}
+    {#                        <div class="fallback">#}
+    {#                            <input name="file" type="file" multiple />#}
+    {#                        </div>#}
+    {#                    </form>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="row">#}
+    {##}
+    {#                    <!-- <div class="table-responsive"> -->#}
+    {#                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="grade-table">#}
+    {#                        <thead>#}
+    {#                        <tr>#}
+    {#                            <th class="mdl-data-table__cell--non-numeric">Ülesanne</th>#}
+    {#                            <th class="mdl-data-table__cell--non-numeric">Hinne</th>#}
+    {#                            <th class="mdl-data-table__cell--non-numeric">Kuupäev</th>#}
+    {#                        </tr>#}
+    {#                        </thead>#}
+    {#                        <tbody>#}
+    {##}
+    {#                        </tbody>#}
+    {#                    </table>#}
+    {#                    <!-- </div> -->#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </section>#}
+    {#    </div>#}
 {% endblock %}
 
 {% block scripts %}

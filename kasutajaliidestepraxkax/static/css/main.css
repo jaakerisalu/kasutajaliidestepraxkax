@@ -300,7 +300,6 @@ nav {
   position: fixed;
   z-index: 9;
   bottom: 20px;
-  right: 13%;
 }
 
 /* The Modal (background) */
@@ -445,4 +444,21 @@ nav {
 
 .mdl-tabs__tab-bar .is-active {
   background-color: #d3d3d3;
+}
+
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.ex-name {
+  font-weight: bold;
 }
