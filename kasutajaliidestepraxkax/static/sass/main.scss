@@ -264,10 +264,10 @@ nav {
 }
 
 .fixed-add-button {
-  position: fixed;
+  position: fixed !important;
   z-index: 9;
-  bottom: 20px;
-  //right: 13%;
+  bottom: 10%;
+  right: 8%;
 }
 
 /* The Modal (background) */

@@ -329,7 +329,7 @@ function openGradeAddingModal() {
 function createModalFields(data) {
 
     for (var i = 0; i < data.length; i++) {
-        var field = '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">';
+        var field = '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">';
         field += '<input class="add-grade-field mdl-textfield__input" type="number" id="' + data[i].fields.name +'" name="grade_' + data[i].fields.name +'"min="0">';
         field += '<label class="mdl-textfield__label" for="' + data[i].fields.name +'">' + data[i].fields.name +'</label>';
         field += '<span class="mdl-textfield__error">Hinne peab olema nullist suurem number.</span>';
