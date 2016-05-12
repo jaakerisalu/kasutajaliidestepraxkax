@@ -1,5 +1,5 @@
 var exercises;
-exercises = ['lab1', 'lab2', 'hw1'];
+exercises = ['Labor 1', 'Labor 2', 'Labor 3'];
 
 var modalReady = false;
 

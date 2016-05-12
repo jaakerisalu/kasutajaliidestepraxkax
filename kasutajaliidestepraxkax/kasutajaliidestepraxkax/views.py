@@ -42,11 +42,9 @@ class StudentView(TemplateView):
         context = super().get_context_data(**kwargs)
         # Teed andmebaasi päringu ja kõik muu infi mis sa kaasa tahad panna siin
 
-        # students = Student.objects.filter(active=True)
-        # context.update({
-        #     students: students,
-        #     mingi_muutuja_mida_vaja: mingi_meetod()
-        # })
+        context.update({
+            'grades': Grade.objects.filter(student__user=self.request.user)
+        })
 
         return context
 
@@ -69,6 +67,7 @@ def add_grade(request):
             for s in request.POST.getlist('student'):
                 for val in values:
                     s_list = s.split(" ")
+                    print(s_list)
                     student = Student.objects.get(matricule=s_list[2])
                     category = GradeCategory.objects.get(name=val.split("_")[1], homework__name=request.POST['ex_name'])
                     if Grade.objects.filter(student=student, category=category).exists():

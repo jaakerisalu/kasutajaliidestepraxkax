@@ -15,13 +15,13 @@ var grades = [{"id":1,"Ülesanne":"ante","Hinne":4,"Kuupäev":"9/16/2015"},
 
 
 $(document).ready(function() {
-  for (var i = 0; i < grades.length; i++) {
-    var row = "<tr>";
-    row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Ülesanne + "</td>";
-    row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Hinne + "</td>";
-    row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Kuupäev + "</td>";
-    row += "</tr>"
-
-    $("#grade-table tbody").append(row);
-  }
+  //for (var i = 0; i < grades.length; i++) {
+  //  var row = "<tr>";
+  //  row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Ülesanne + "</td>";
+  //  row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Hinne + "</td>";
+  //  row += '<td class="mdl-data-table__cell--non-numeric">' + grades[i].Kuupäev + "</td>";
+  //  row += "</tr>"
+  //
+  //  $("#grade-table tbody").append(row);
+  //}
 });

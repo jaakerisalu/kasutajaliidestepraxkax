@@ -29,13 +29,19 @@
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="grade-table">
                             <thead>
                             <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Ülesanne</th>
+                                <th class="mdl-data-table__cell--non-numeric">Kodutöö</th>
+                                <th class="mdl-data-table__cell--non-numeric">Hinde nimi</th>
                                 <th class="mdl-data-table__cell--non-numeric">Hinne</th>
-                                <th class="mdl-data-table__cell--non-numeric">Kuupäev</th>
                             </tr>
                             </thead>
                             <tbody>
-
+                                {% for grade in grades %}
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">{{ grade.category.homework.name }}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{ grade.category.name }}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{ grade.value }}</td>
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
