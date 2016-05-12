@@ -2,7 +2,7 @@
  *
  */
 $(document).ready(function() {
-   initAddGradeListeners();
+    initAddGradeListeners();
     console.log("doc ready")
 });
 

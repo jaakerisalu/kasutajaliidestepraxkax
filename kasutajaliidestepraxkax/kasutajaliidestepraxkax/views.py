@@ -27,10 +27,6 @@ class TeacherView(LoggedInMixin, TemplateView):
         students = Student.objects.all()
         homeworks = HomeWork.objects.all()
 
-        # g = Grade.objects.filter()
-
-        # print(g)
-
         context.update({
             'students': students,
             'homeworks': homeworks,
@@ -57,34 +53,29 @@ class StudentView(TemplateView):
 
 def add_grade(request):
     if request.method == 'POST':
-        print("POST")
         values = [name for name, value in request.POST.items() if name.startswith('grade_')]
 
         if "form-type" not in request.POST:
-
-            print(request.POST.getlist('student'))
-            print(request.POST)
-
             for s in request.POST.getlist('student'):
                 for val in values:
                     s_list = s.split(" ")
-                    print(s_list)
                     student = Student.objects.filter(matricule=s_list[2]).first()
-                    category = GradeCategory.objects.filter(name=val.split("_")[1]).filter(homework__name=request.POST['ex_name']).first()
+                    category = GradeCategory.objects.get(name=val.split("_")[1], homework__name=request.POST['ex_name'])
                     grade = Grade(student=student, category=category, value=request.POST[val])
 
-                    if Grade.objects.filter(student=student).filter(category=category):
-                        print("no pigem ei");
-                    else:
+                    if not Grade.objects.filter(student=student, category=category).exists():
                         grade.save()
         else:
             for s in request.POST.getlist('student'):
                 for val in values:
                     s_list = s.split(" ")
-                    print(s_list)
-                    student = Student.objects.filter(matricule=s_list[2]).first()
-                    category = GradeCategory.objects.filter(name=val.split("_")[1]).filter(homework__name=request.POST['ex_name']).first()
-                    Grade.objects.filter(student=student).filter(category=category).update(value=request.POST[val])
+                    student = Student.objects.get(matricule=s_list[2])
+                    category = GradeCategory.objects.get(name=val.split("_")[1], homework__name=request.POST['ex_name'])
+                    if Grade.objects.filter(student=student, category=category).exists():
+                        Grade.objects.get(student=student, category=category).value = request.POST[val]
+                    else:
+                        g = Grade(student=student, category=category, value=request.POST[val])
+                        g.save()
 
     return HttpResponseRedirect("/teacher")
 
