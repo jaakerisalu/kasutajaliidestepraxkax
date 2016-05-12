@@ -9,10 +9,10 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto; }
-  .login-container input {
-    color: rgba(10, 10, 10, 0.7); }
-  .login-container small {
-    color: rgba(10, 10, 10, 0.7); }
+.login-container input {
+  color: rgba(10, 10, 10, 0.7); }
+.login-container small {
+  color: rgba(10, 10, 10, 0.7); }
 
 .login-button {
   margin: 10px;
@@ -102,10 +102,10 @@ nav {
   float: right;
   font-size: 28px;
   font-weight: bold; }
-  .close :hover, .close :focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer; }
+.close :hover, .close :focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer; }
 
 .edit-exercise:hover {
   cursor: pointer; }
@@ -120,20 +120,20 @@ nav {
   border-radius: 16px;
   background-color: #e4e4e4;
   margin: 5px; }
-  .custom-chip .material-icons {
-    cursor: pointer;
-    float: right;
-    font-size: 16px;
-    line-height: 32px;
-    padding-left: 8px; }
+.custom-chip .material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px; }
 
 #grades-table-head .mdl-select {
   width: auto;
   padding: 0; }
 #grades-table-head th {
   font-size: 16px; }
-  #grades-table-head th select {
-    padding: 0; }
+#grades-table-head th select {
+  padding: 0; }
 
 .mdl-textfield--floating-label.is-filled .mdl-textfield__label {
   color: #4caf50;
@@ -143,8 +143,8 @@ nav {
 
 .mdl-dialog__actions {
   padding: 8px; }
-  .mdl-dialog__actions .btn-cancel {
-    color: #CA1717; }
+.mdl-dialog__actions .btn-cancel {
+  color: #CA1717; }
 
 .demo-avatar {
   display: inline-block; }
@@ -157,11 +157,11 @@ nav {
     width: 100%; } }
 .delete-column {
   text-align: center !important; }
-  .delete-column .delete-student {
-    color: #CA1717;
-    font-size: 12px; }
-    .delete-column .delete-student:hover {
-      cursor: pointer; }
+.delete-column .delete-student {
+  color: #CA1717;
+  font-size: 12px; }
+.delete-column .delete-student:hover {
+  cursor: pointer; }
 
 .btn-search {
   padding-top: 3px;
@@ -355,11 +355,11 @@ nav {
 
 // Overwrite modal 'footer'
 .mdl-dialog__actions {
-    padding: 8px;
+  padding: 8px;
 
-    .btn-cancel {
-        color: #CA1717;
-    }
+  .btn-cancel {
+    color: #CA1717;
+  }
 }
 
 .demo-avatar {
@@ -381,21 +381,21 @@ nav {
 
 // The student delete glyphicon
 .delete-column {
-    .delete-student{
-        color: #CA1717;
-        font-size: 12px;
+  .delete-student{
+    color: #CA1717;
+    font-size: 12px;
 
-        &:hover {
-            cursor: pointer;
-        }
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    text-align: center !important;
+  text-align: center !important;
 }
 
 .btn-search {
-    padding-top: 3px;
-    padding-bottom: 0;
+  padding-top: 3px;
+  padding-bottom: 0;
 }
 
 .awesomplete {
@@ -409,15 +409,19 @@ nav {
 
 
 .browserupgrade {
-    margin: 0;
-    background: #dd8;
-    color: #000;
-    padding: 0.5em 2em;
-    border-bottom: 1px solid #888;
+  margin: 0;
+  background: #dd8;
+  color: #000;
+  padding: 0.5em 2em;
+  border-bottom: 1px solid #888;
 }
 
 .mdl-tabs__tab-bar .is-active {
-    background-color: #d3d3d3;
+  background-color: #d3d3d3;
+}
+
+.mdl-tabs__panel {
+  overflow-x: auto;
 }
 
 .demo-card-wide.mdl-card {
@@ -432,5 +436,5 @@ nav {
 }
 
 .ex-name {
-    font-weight: bold;
+  font-weight: bold;
 }

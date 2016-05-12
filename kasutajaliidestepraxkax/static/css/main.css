@@ -447,6 +447,10 @@ nav {
   background-color: #d3d3d3;
 }
 
+.mdl-tabs__panel {
+  overflow-x: auto;
+}
+
 .demo-card-wide.mdl-card {
   width: 512px;
 }

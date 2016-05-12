@@ -72,7 +72,9 @@ def add_grade(request):
                     student = Student.objects.get(matricule=s_list[2])
                     category = GradeCategory.objects.get(name=val.split("_")[1], homework__name=request.POST['ex_name'])
                     if Grade.objects.filter(student=student, category=category).exists():
-                        Grade.objects.get(student=student, category=category).value = request.POST[val]
+                        g = Grade.objects.get(student=student, category=category)
+                        g.value = request.POST[val]
+                        g.save()
                     else:
                         g = Grade(student=student, category=category, value=request.POST[val])
                         g.save()
