@@ -97,12 +97,12 @@ function populateExerciseList() {
  * @returns {string}
  */
 function createExRow(ex) {
-    var row = '<li class="mdl-list__item">';
-    row += '<span class="mdl-list__item-primary-content">';
-    row += '<i class="material-icons mdl-list__item-icon edit-exercise">create</i>';
-    row += '<span class="ex-name-span">' + ex + '</span>';
-    row += '</span></li>';
-    return row;
+    // var row = '<li class="mdl-list__item">';
+    // row += '<span class="mdl-list__item-primary-content">';
+    // row += '<i class="material-icons mdl-list__item-icon edit-exercise">create</i>';
+    // row += '<span class="ex-name-span">' + ex + '</span>';
+    // row += '</span></li>';
+    // return row;
 }
 
 

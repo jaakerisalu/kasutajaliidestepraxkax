@@ -53,7 +53,8 @@
                                     {% csrf_token %}
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label find-student-container">
-                                        <input class="mdl-textfield__input awesomplete" type="text" id="find-student" list="studentList">
+                                        <input class="mdl-textfield__input awesomplete" type="text" id="find-student"
+                                               list="studentList">
 
                                         <datalist id="studentList">
                                             {% for student in students %}
@@ -69,12 +70,12 @@
 
                                     <div class="subgrade"></div>
 
-{#                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">#}
-{#                                        <input class="mdl-textfield__input" type="number" id="grade" name="grade"#}
-{#                                               min="0">#}
-{#                                        <label class="mdl-textfield__label" for="grade">Hinne</label>#}
-{#                                        <span class="mdl-textfield__error">Hinne peab olema nullist suurem number.</span>#}
-{#                                    </div>#}
+                                    {#                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">#}
+                                    {#                                        <input class="mdl-textfield__input" type="number" id="grade" name="grade"#}
+                                    {#                                               min="0">#}
+                                    {#                                        <label class="mdl-textfield__label" for="grade">Hinne</label>#}
+                                    {#                                        <span class="mdl-textfield__error">Hinne peab olema nullist suurem number.</span>#}
+                                    {#                                    </div>#}
 
                                     <br/>
                                     <br/>
@@ -155,6 +156,16 @@
                 <div class="mdl-grid demo-content">
                     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                         <ul class="demo-list-item mdl-list" id="exercise-list">
+
+                            {% for hw in homeworks %}
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-icon edit-exercise">create</i>
+                                        <span class="ex-name-span">{{ hw.name }}</span>
+                                    </span>
+                                </li>
+                            {% endfor %}
+
                             <li class="mdl-list__item add-new-exercise-link" id="add-new-exercise-link">
                             <span class="mdl-list__item-primary-content">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable"
